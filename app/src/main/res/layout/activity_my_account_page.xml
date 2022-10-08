@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    tools:context=".Account.MyAccountPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-183dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="565dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="20dp"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_below="@id/textTeknoy"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/my_account" />
+
+            <TextView
+                android:id="@+id/txtDashboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Account"
+                android:textColor="@color/maroon"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textTeknoy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtDashboard"
+                android:text="Health Teknoy"
+                android:textColor="@color/maroon"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/viewMiddle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image1"
+                android:layout_marginLeft="265dp"
+                android:layout_marginTop="10dp"
+                android:text="M.I"
+                android:textColor="#632728"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/viewLast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image1"
+                android:layout_marginLeft="125dp"
+                android:layout_marginTop="10dp"
+                android:text="LAST NAME"
+                android:textColor="#632728"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/viewFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image1"
+                android:layout_marginTop="10dp"
+                android:text="FIRST NAME"
+                android:textColor="#632728"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/viewEmail2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textFirst"
+                android:layout_marginTop="10dp"
+                android:text="INSTITUTIONAL EMAIL"
+                android:textColor="#632728"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/viewAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textEmail2"
+                android:layout_marginTop="10dp"
+                android:text="ADDRESS"
+                android:textColor="#632728"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/viewPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textAddress"
+                android:layout_marginTop="10dp"
+                android:text="PHONE NUMBER"
+                android:textColor="#632728"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/textMiddle"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewMiddle"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/edit"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/textLast"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewMiddle"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/textMiddle"
+                android:background="@drawable/edit"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/textFirst"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewMiddle"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/textLast"
+                android:background="@drawable/edit"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/textEmail2"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewEmail2"
+                android:layout_marginEnd="-234dp"
+                android:background="@drawable/edit"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/textAddress"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewAddress"
+                android:layout_marginEnd="-234dp"
+                android:background="@drawable/edit"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/textPhone"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewPhone"
+                android:layout_marginEnd="-234dp"
+                android:background="@drawable/edit"
+                android:inputType="phone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/textPhone"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="220dp"
+                android:background="@color/white"
+                android:hint="@string/select">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveButton"
+                android:layout_width="102dp"
+                android:layout_height="48dp"
+                android:layout_below="@id/inputLayout"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="20dp"
+                android:onClick="updateAccount"
+                android:background="@drawable/button_background2"
+                android:text="UPDATE" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/updateButton"
+                android:layout_width="102dp"
+                android:layout_height="48dp"
+                android:layout_below="@id/inputLayout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:onClick="saveAccount"
+                android:layout_toRightOf="@id/saveButton"
+                android:background="@drawable/button_background2"
+                android:text="SAVE" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="488dp"
+        android:layout_height="367dp"
+        android:layout_marginTop="374dp"
+        android:layout_marginBottom="-10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/circles" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "111507402086",
+    "project_id": "healthteknoy",
+    "storage_bucket": "healthteknoy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111507402086:android:9e9df7eac4f003f1daeca7",
+        "android_client_info": {
+          "package_name": "com.example.healthteknoy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111507402086-9ln1h8tc47gmkq1jlcm4d17hg7namfp2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB9xDFoYCoDkzxVyRRR_JJYHbshpRCSro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111507402086-9ln1h8tc47gmkq1jlcm4d17hg7namfp2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

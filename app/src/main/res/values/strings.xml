@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HealthTeknoy</string>
+    <string name="welcome">Welcome!</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="select">Gender</string>
+    <string name="done">done</string>
+</resources>
