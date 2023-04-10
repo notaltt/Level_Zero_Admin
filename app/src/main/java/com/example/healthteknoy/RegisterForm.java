@@ -15,8 +15,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterForm extends AppCompatActivity {
+    DatabaseReference root;
     private FirebaseAuth regauth;
     private EditText textLastName, textFirstName, textregEmail, textPassword, textConfirmPassword;
     private AppCompatButton buttonCreate;
@@ -26,6 +29,8 @@ public class RegisterForm extends AppCompatActivity {
         setContentView(R.layout.activity_register_form);
 
         regauth = FirebaseAuth.getInstance();
+
+        root = FirebaseDatabase.getInstance("https://healthteknoy-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
 
         //EDIT TEXT
         textLastName = (EditText) findViewById(R.id.textLastName);
@@ -44,27 +49,45 @@ public class RegisterForm extends AppCompatActivity {
         });
     }
 
-    private void create() {
-        String user = textregEmail.getText().toString().trim();
-        String pass = textPassword.getText().toString().trim();
-        String confirmPass = textConfirmPassword.getText().toString().trim();
 
-        if (user.isEmpty()){
-            textregEmail.setError("!!PLEASE INPUT YOUR EMAIL!!");
-        }if (pass.isEmpty()) {
-            textPassword.setError("!!PLEASE INPUT YOUR PASSWORD!!");
-        }else {
-            regauth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(RegisterForm.this, "Creating an account is success.", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegisterForm.this, LoginForm.class));
-                    }else{
-                        Toast.makeText(RegisterForm.this, "Creating an account is failed."+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+    private void create() {
+        String lastName = textLastName.getText().toString();
+        String firstName = textFirstName.getText().toString();
+        String regEmail = textregEmail.getText().toString();
+        String password = textPassword.getText().toString();
+        String confirmPassword = textConfirmPassword.getText().toString();
+
+        if(regEmail.isEmpty() || password.isEmpty() || lastName.isEmpty() || firstName.isEmpty() || confirmPassword.isEmpty()){
+            if(regEmail.isEmpty()){
+                textregEmail.setError("Input your Email");
+            }if(password.isEmpty()){
+                textPassword.setError("Input your Password");
+            }if(lastName.isEmpty()){
+                textLastName.setError("Input your Last Name");
+            }if(firstName.isEmpty()){
+                textFirstName.setError("Input your First Name");
+            }if(confirmPassword.isEmpty()){
+                textConfirmPassword.setError("Input your Confirm Password");
+            }
+            Toast.makeText(RegisterForm.this, "Empty fields are not allowed", Toast.LENGTH_SHORT).show();
+        } else {
+            if(password.equals(confirmPassword)){
+                regauth.createUserWithEmailAndPassword(regEmail, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            User user = new User(firstName, lastName, regEmail, password);
+                            root.child("User").child(firstName).setValue(user);;
+                            Toast.makeText(RegisterForm.this, "Creating an account is success.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegisterForm.this, LoginForm.class));
+                        }else{
+                            Toast.makeText(RegisterForm.this, "Creating an account is failed."+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
+            }else{
+                Toast.makeText(RegisterForm.this, "Password mismatch.", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

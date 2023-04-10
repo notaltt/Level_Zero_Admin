@@ -1,7 +1,7 @@
 package com.example.healthteknoy;
 
 public class User {
-    private String firstName, lastName, middleInitial, classification, address, email, password;
+    private String fullName, classification, address, email, password;
     private int phoneNumber, timeVisit;
     private double temperature;
 
@@ -18,6 +18,23 @@ public class User {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
+    }
+
+    public User(String firstName, String lastName, String middleInitial, String classification, String address, String email, int phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleInitial = middleInitial;
+        this.classification = classification;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public User(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 
     public String getFirstName() {

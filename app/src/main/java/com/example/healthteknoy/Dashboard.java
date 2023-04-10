@@ -24,37 +24,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Dashboard extends AppCompatActivity {
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+
     private TextView textEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-        //firebase instances
-        firebaseDatabase = FirebaseDatabase.getInstance("https://healthteknoy-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        databaseReference = firebaseDatabase.getReference("Email");
-
-        //text view
-        textEmail = findViewById(R.id.textEmail);
-
-        getData();
-    }
-
-    public void getData(){
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue(String.class);
-                textEmail.setText(value);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Dashboard.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     public void openCalendar(View view) {

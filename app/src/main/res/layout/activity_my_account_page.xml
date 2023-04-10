@@ -16,69 +16,19 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="565dp"
+            android:layout_height="597dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="32dp"
             android:layout_marginRight="20dp"
             android:padding="10dp">
 
-            <ImageView
-                android:id="@+id/image1"
-                android:layout_width="62dp"
-                android:layout_height="62dp"
-                android:layout_below="@id/textTeknoy"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/my_account" />
-
-            <TextView
-                android:id="@+id/txtDashboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Account"
-                android:textColor="@color/maroon"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textTeknoy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txtDashboard"
-                android:text="Health Teknoy"
-                android:textColor="@color/maroon"
-                android:textSize="14sp" />
-
             <TextView
                 android:id="@+id/viewMiddle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/image1"
                 android:layout_marginLeft="265dp"
                 android:layout_marginTop="10dp"
                 android:text="M.I"
-                android:textColor="#632728"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/viewLast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/image1"
-                android:layout_marginLeft="125dp"
-                android:layout_marginTop="10dp"
-                android:text="LAST NAME"
-                android:textColor="#632728"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/viewFirst"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/image1"
-                android:layout_marginTop="10dp"
-                android:text="FIRST NAME"
                 android:textColor="#632728"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -176,40 +126,38 @@
                 android:id="@+id/inputLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:layout_below="@id/textPhone"
                 android:layout_marginTop="25dp"
-                android:layout_marginRight="220dp"
-                android:background="@color/white"
-                android:hint="@string/select">
+                android:layout_marginRight="150dp"
+                android:background="@color/white">
 
                 <AutoCompleteTextView
                     android:id="@+id/autoComplete"
-                    android:layout_width="match_parent"
+                    android:layout_width="195dp"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:text="Gender" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/saveButton"
-                android:layout_width="102dp"
-                android:layout_height="48dp"
-                android:layout_below="@id/inputLayout"
-                android:layout_marginLeft="150dp"
-                android:layout_marginTop="20dp"
-                android:onClick="updateAccount"
-                android:background="@drawable/button_background2"
-                android:text="UPDATE" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/updateButton"
                 android:layout_width="102dp"
                 android:layout_height="48dp"
                 android:layout_below="@id/inputLayout"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_background2"
+                android:text="UPDATE" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveButton"
+                android:layout_width="102dp"
+                android:layout_height="48dp"
+                android:layout_below="@id/inputLayout"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:onClick="saveAccount"
-                android:layout_toRightOf="@id/saveButton"
+                android:layout_toRightOf="@id/updateButton"
                 android:background="@drawable/button_background2"
                 android:text="SAVE" />
         </RelativeLayout>

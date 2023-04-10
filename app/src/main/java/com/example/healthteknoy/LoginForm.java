@@ -12,16 +12,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.healthteknoy.Account.MyAccountPage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginForm extends AppCompatActivity {
     TextView clickNewAccount;
     private AppCompatButton loginButton;
     private EditText email, password;
     private FirebaseAuth mauth;
+    DatabaseReference root;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +64,7 @@ public class LoginForm extends AppCompatActivity {
         },500);
     }
 
-    private void login(){
+    /*private void login(){
         String user = email.getText().toString().trim();
         String pass = password.getText().toString().trim();
 
@@ -77,5 +85,52 @@ public class LoginForm extends AppCompatActivity {
                 }
             });
         }
+    }*/
+
+    private void login(){
+        String user = email.getText().toString().trim();
+        String pass = password.getText().toString().trim();
+
+        root = FirebaseDatabase.getInstance("https://healthteknoy-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+
+        Query checkUser = root.orderByChild("email").equalTo(user);
+
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                     email.setError(null);
+                    String passwordDB = snapshot.child(user).child("password").getValue(String.class);
+                    if(passwordDB.equals(pass)){
+                        String firstNameDB = snapshot.child(user).child("firstName").getValue(String.class);
+                        String lastNameDB = snapshot.child(user).child("lirstName").getValue(String.class);
+                        String emailDB = snapshot.child(user).child("email").getValue(String.class);
+
+                        Intent intent = new Intent(getApplicationContext(), MyAccountPage.class);
+                        Intent intentDash = new Intent(getApplicationContext(), Dashboard.class);
+
+                        intent.putExtra("firstName", firstNameDB);
+                        intent.putExtra("lastName", lastNameDB);
+                        intent.putExtra("email", emailDB);
+
+                        intentDash.putExtra("email", emailDB);
+                        startActivity(intent);
+                        startActivity(intentDash);
+                    }else{
+                        password.setError("Wrong Password");
+                        password.requestFocus();
+                    }
+                } else {
+                    email.setError("No such Email exists");
+                    email.requestFocus();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }
